@@ -1,16 +1,20 @@
+# webservers 
+
 services:
   web_apache:
-    image: tomcat
+    image: tomcat:latest
     container_name: tomcat
     ports:
       - 8888:8080
 
+  web_nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - 8889:80
 
-  attacker_slowloris:
-    build: ./ddos/Slowloris/slowloris/ 
-    container_name: slowloris
-    
-  # wireshark:
-  #   image: lscr.io/linuxserver/wireshark
-  #   container_name: wireshark
-  #   restart: unless-stopped
+  web_httpd:
+    image: httpd:latest
+    container_name: httpd
+    ports: 
+      - 8890:80
