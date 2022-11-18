@@ -18,3 +18,53 @@ services:
     container_name: httpd
     ports: 
       - 8890:80
+
+# attackers
+
+  slowloris:
+    image: gevaani/ddos_attack:slowloris
+    deploy:
+      replicas: $REPLICAS
+    profiles:
+      - slowloris
+    depends_on:
+      - web_apache
+      - web_nginx
+      - web_httpd
+    command: ["${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+
+  hulk:
+    image: gevaani/ddos_attack:hulk
+    deploy:
+      replicas: $REPLICAS
+    profiles:
+      - hulk
+    depends_on:
+      - web_apache
+      - web_nginx
+      - web_httpd 
+    command: ["${TARGET_URL:-site}", "${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+
+  mhddos:
+    image: gevaani/ddos_attack:mhddos
+    deploy:
+      replicas: $REPLICAS
+    profiles:
+      - mhddos
+    depends_on:
+      - web_apache
+      - web_nginx
+      - web_httpd
+    command: ["${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+
+  goldeneye:
+    image: gevaani/ddos_attack:goldeneye
+    deploy:
+      replicas: $REPLICAS
+    profiles:
+      - goldeneye
+    depends_on:
+      - web_apache
+      - web_nginx
+      - web_httpd
+    command: ["${TARGET_URL}", "${SLOWLORIS_ARGS}"]
