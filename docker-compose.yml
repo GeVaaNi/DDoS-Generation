@@ -4,67 +4,75 @@ services:
   web_apache:
     image: tomcat:latest
     container_name: tomcat
+    stdin_open: true
+    tty: true
     ports:
       - 8888:8080
 
-  web_nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-      - 8889:80
+  # web_nginx:
+  #   image: nginx:latest
+  #   container_name: nginx
+  #   ports:
+  #     - 8889:80
+  #   stdin_open: true
+  #   tty: true
 
-  web_httpd:
-    image: httpd:latest
-    container_name: httpd
-    ports: 
-      - 8890:80
+  # web_httpd:
+  #   image: httpd:latest
+  #   container_name: httpd
+  #   ports: 
+  #     - 8890:80
+
+  # target:
+  #     image: vulnerables/web-dvwa
+  #     ports:
+  #       - 80:80
+  
+  # target:
+  #   build: builds/webservers
+  #   ports:
+  #     - 80:1313
+  #   stdin_open: true
+  #   tty: true
+
+# wireshark
+  # wireshark:
+  #   build: builds/wireshark
+  #   stdin_open: true
+  #   tty: true
 
 # attackers
 
-  slowloris:
-    image: gevaani/ddos_attack:slowloris
-    deploy:
-      replicas: $REPLICAS
-    profiles:
-      - slowloris
-    depends_on:
-      - web_apache
-      - web_nginx
-      - web_httpd
-    command: ["${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+  # slowloris:
+  #   build: builds/slowloris
+  #   deploy:
+  #     replicas: 1
+  #   stdin_open: true
+  #   tty: true
 
-  hulk:
-    image: gevaani/ddos_attack:hulk
-    deploy:
-      replicas: $REPLICAS
-    profiles:
-      - hulk
-    depends_on:
-      - web_apache
-      - web_nginx
-      - web_httpd 
-    command: ["${TARGET_URL:-site}", "${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+  # hulk:
+  #   build: builds/hulk
+  #   deploy:
+  #     replicas: $REPLICAS
+  #   stdin_open: true
+  #   tty: true
 
-  mhddos:
-    image: gevaani/ddos_attack:mhddos
-    deploy:
-      replicas: $REPLICAS
-    profiles:
-      - mhddos
-    depends_on:
-      - web_apache
-      - web_nginx
-      - web_httpd
-    command: ["${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+  # mhddos:
+  #   build: builds/MHDDoS
+  #   deploy:
+  #     replicas: $REPLICAS
+  #   stdin_open: true
+  #   tty: true
 
-  goldeneye:
-    image: gevaani/ddos_attack:goldeneye
-    deploy:
-      replicas: $REPLICAS
-    profiles:
-      - goldeneye
-    depends_on:
-      - web_apache
-      - web_nginx
-      - web_httpd
-    command: ["${TARGET_URL}", "${SLOWLORIS_ARGS}"]
+  # goldeneye:
+  #   build: builds/goldeneye
+  #   deploy:
+  #     replicas: $REPLICAS
+  #   stdin_open: true
+  #   tty: true
+  
+  hping3:
+    build: builds/hping
+    stdin_open: true
+    tty: true
+    
