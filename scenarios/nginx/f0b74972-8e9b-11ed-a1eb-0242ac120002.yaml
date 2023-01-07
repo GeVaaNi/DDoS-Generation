@@ -1,0 +1,19 @@
+# we'll start with UDP flood
+uuid: f0b74972-8e9b-11ed-a1eb-0242ac120002
+scenarioType: ddos
+attacker:
+  category: ddos
+  name: hping3
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/hping3:latest
+  atkCommand: hping3 127.0.0.1 -I lo --udp -p 53 --i u1000
+target:
+  category: webserver
+  name: nginx
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/nginx-target:latest
+  ports:
+  - 80
+captureEngine:
+  name: tcpdump
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tcpdump:latest
+  interface: lo
+tag: ""

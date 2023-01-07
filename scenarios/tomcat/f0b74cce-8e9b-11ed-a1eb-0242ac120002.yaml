@@ -1,0 +1,18 @@
+uuid: f0b74cce-8e9b-11ed-a1eb-0242ac120002
+scenarioType: ddos
+attacker:
+  category: ddos
+  name: hulk
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/hulk:latest
+  atkCommand: hulk -site http://127.0.0.1
+target:
+  category: webserver
+  name: tomcat
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tomcat-target:latest
+  ports:
+  - 80
+captureEngine:
+  name: tcpdump
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tcpdump:latest
+  interface: lo
+tag: ""

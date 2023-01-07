@@ -1,0 +1,19 @@
+# we'll be attacking on layer 4
+uuid: f0b74738-8e9b-11ed-a1eb-0242ac120002
+scenarioType: ddos
+attacker:
+  category: ddos
+  name: MHDDoS
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/mhddos:latest
+  atkCommand: python3 start.py tcp 127.0.0.1:80 1 30
+target:
+  category: webserver
+  name: litespeed
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/litespeed-target:latest
+  ports:
+  - 80
+captureEngine:
+  name: tcpdump
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tcpdump:latest
+  interface: lo
+tag: ""
