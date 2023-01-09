@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: thc-ssl
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/thc-ssl:latest
-  atkCommand: thc-ssl-dos -l 100 127.0.0.1 443 --accept
+  atkCommand: timeout 5m thc-ssl-dos -l 100 127.0.0.1 443 --accept
 target:
   category: webserver
   name: litespeed

@@ -5,7 +5,7 @@ attacker:
   category: ddos
   name: MHDDoS
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/mhddos:latest
-  atkCommand: python3 start.py tcp 127.0.0.1:80 1 30
+  atkCommand: timeout 5m python3 start.py tcp 127.0.0.1:80 1 30
 target:
   category: webserver
   name: litespeed

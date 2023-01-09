@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: hulk
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/hulk:latest
-  atkCommand: hulk -site http://127.0.0.1
+  atkCommand: timeout 5m hulk -site http://127.0.0.1
 target:
   category: webserver
   name: tomcat

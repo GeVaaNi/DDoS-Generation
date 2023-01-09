@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: rudy
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/rudy:latest
-  atkCommand: rudy -t "http://localhost:80"
+  atkCommand: timeout 5m rudy -t "http://localhost:80"
 target:
   category: webserver
   name: httpd

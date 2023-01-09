@@ -5,7 +5,7 @@ attacker:
   category: ddos
   name: LOIC
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/loic:latest
-  atkCommand: ./loic.sh run
+  atkCommand: timeout 5m ./loic.sh run
 target:
   category: webserver
   name: nginx

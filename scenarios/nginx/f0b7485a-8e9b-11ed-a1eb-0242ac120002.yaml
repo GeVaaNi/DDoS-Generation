@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: DNSdrDoS
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/dns-drdos:latest
-  atkCommand: ./dnsdrdos -f DNS_server_list/DNS_server_list_BE.txt
+  atkCommand: timeout 5m ./dnsdrdos -f DNS_server_list/DNS_server_list_BE.txt
 target:
   category: webserver
   name: nginx

@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: slowloris
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/slowloris:latest
-  atkCommand: python3 slowloris.py http://127.0.0.1 -s 1000
+  atkCommand: timeout 5m python3 slowloris.py http://127.0.0.1 -s 1000
 target:
   category: webserver
   name: httpd

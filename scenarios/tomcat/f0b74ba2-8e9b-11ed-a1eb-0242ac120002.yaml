@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: torshammer
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/torshammer:latest
-  atkCommand: python3 torshammer.py -t 127.0.0.1 -r 500 -T 
+  atkCommand: timeout 5m python3 torshammer.py -t 127.0.0.1 -r 500 -T 
 target:
   category: webserver
   name: tomcat

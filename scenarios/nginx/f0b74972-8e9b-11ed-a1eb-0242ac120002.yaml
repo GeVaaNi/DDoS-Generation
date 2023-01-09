@@ -5,7 +5,7 @@ attacker:
   category: ddos
   name: hping3
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/hping3:latest
-  atkCommand: hping3 127.0.0.1 -I lo --udp -p 53 --i u1000
+  atkCommand: timeout 5m hping3 127.0.0.1 -I lo --udp -p 53 --i u1000
 target:
   category: webserver
   name: nginx

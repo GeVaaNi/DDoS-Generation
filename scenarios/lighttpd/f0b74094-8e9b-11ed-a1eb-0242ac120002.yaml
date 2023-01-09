@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: pyloris
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/pyloris:latest
-  atkCommand: python3 attack.py http://127.0.0.1 -c 500
+  atkCommand: timeout 5m python3 attack.py http://127.0.0.1 -c 500
 target:
   category: webserver
   name: lighttpd

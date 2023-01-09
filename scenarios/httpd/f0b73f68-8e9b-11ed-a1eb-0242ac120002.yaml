@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: cc-attack
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/cc:latest
-  atkCommand: python3 cc.py -url http://localhost -b 1
+  atkCommand: timeout 5m python3 cc.py -url http://localhost -b 1
 target:
   category: webserver
   name: httpd

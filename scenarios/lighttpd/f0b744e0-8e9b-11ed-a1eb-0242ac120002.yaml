@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: goldeneye
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/goldeneye:latest
-  atkCommand: python3 goldeneye.py http://127.0.0.1 -s 1000 -n 
+  atkCommand: timeout 5m python3 goldeneye.py http://127.0.0.1 -s 1000 -n 
 target:
   category: webserver
   name: lighttpd
