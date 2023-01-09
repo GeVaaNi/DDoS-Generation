@@ -1,8 +1,5 @@
-FROM golang:1-alpine
-LABEL maintainer="Alexander I.Grafov <grafov@gmail.com>"
-RUN apk add --no-cache git \
-  # && go get -d -v github.com/grafov/hulk \
-  && go install github.com/grafov/hulk@latest \
-  && rm -rf ~/go/src/github.com/grafov/hulk \
-  && apk del git
+FROM kalilinux/kali-rolling
+LABEL maintainer "Geert-Jan Van Nieuwenhove <geertjan.vannieuwenhove@ugent.be>"
+RUN apt update && apt install golang git -y
+RUN go install github.com/grafov/hulk@latest 
 CMD [ "/usr/bin/bash" ]
