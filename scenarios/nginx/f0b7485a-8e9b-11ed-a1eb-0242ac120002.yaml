@@ -2,9 +2,10 @@ uuid: f0b7485a-8e9b-11ed-a1eb-0242ac120002
 scenarioType: ddos
 attacker:
   category: ddos
-  name: DNSdrDoS
+  name: dnsdrdos
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/dns-drdos:latest
-  atkCommand: timeout 5m ./dnsdrdos -f DNS_server_list/DNS_server_list_BE.txt
+  atkCommand: timeout 5m for i in `seq 1 1000`; do ./dnsdrdos -f DNS_server_list/DNS_server_list_BE.txt -s 127.0.0.1 -d $i -l 10000; done
+
 target:
   category: webserver
   name: nginx
