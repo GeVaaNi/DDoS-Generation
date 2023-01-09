@@ -3,7 +3,7 @@ uuid: f0b74a80-8e9b-11ed-a1eb-0242ac120002
 scenarioType: ddos
 attacker:
   category: ddos
-  name: LOIC
+  name: loic
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/loic:latest
   atkCommand: timeout 5m ./loic.sh run
 target:
