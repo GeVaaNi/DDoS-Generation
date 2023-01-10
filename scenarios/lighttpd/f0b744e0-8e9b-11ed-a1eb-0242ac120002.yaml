@@ -8,7 +8,7 @@ attacker:
 target:
   category: webserver
   name: lighttpd
-  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/lgihttpd-target:latest
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/lighttpd-target:latest
   ports:
   - 80
 captureEngine:
