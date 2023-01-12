@@ -1,0 +1,19 @@
+# LAND attack
+uuid: 75c9fcef-051e-4773-8143-e71731e57d02
+scenarioType: ddos
+attacker:
+  category: ddos
+  name: hping3
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/hping3:latest
+  atkCommand: timeout 20s hping3 127.0.0.1 -I lo -c 5 -d 120 -S -p 80 -s 80 --faster -a 127.0.0.1 -q -n
+target:
+  category: webserver
+  name: nginx
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/nginx-target:latest
+  ports:
+  - 80
+captureEngine:
+  name: tcpdump
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tcpdump:latest
+  interface: lo
+tag: ""

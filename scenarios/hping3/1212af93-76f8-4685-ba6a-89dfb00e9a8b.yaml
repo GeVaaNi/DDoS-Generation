@@ -1,0 +1,19 @@
+# smurf attack
+uuid: 1212af93-76f8-4685-ba6a-89dfb00e9a8b
+scenarioType: ddos
+attacker:
+  category: ddos
+  name: hping3
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/hping3:latest
+  atkCommand: timeout 20s hping3 -1 --flood -a 127.0.0.1 127.0.255.255 
+target:
+  category: webserver
+  name: httpd
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/httpd-target:latest
+  ports:
+  - 80
+captureEngine:
+  name: tcpdump
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tcpdump:latest
+  interface: lo
+tag: ""
