@@ -1,0 +1,18 @@
+uuid: f0b73e28-8e9b-11ed-a1eb-0242ac120002
+scenarioType: ddos
+attacker:
+  category: ddos
+  name: slowloris
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/slowloris:latest
+  atkCommand: timeout 5m python3 slowloris.py 127.0.0.1 -ua -p 80 -s 1000
+target:
+  category: webserver
+  name: httpd
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/httpd-target:latest
+  ports:
+  - 80
+captureEngine:
+  name: tcpdump
+  image: gitlab.ilabt.imec.be:4567/lpdhooge/containercap-imagery/tcpdump:latest
+  interface: lo
+tag: ""
